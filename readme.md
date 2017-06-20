@@ -1,7 +1,10 @@
----
-title: 通过浏览器加载的方式使用strapdown.js来渲染markdown
----
-## 文章导读
+# strapdownify
+strapdownify是我个人修改后的strapdown框架，用来渲染markdown。
+作者github:    https://github.com/arturadib
+原代码库github：https://github.com/arturadib/strapdown
+代码版本：v2
+
+## 导读
 1. 如何手动调用`strapdown.js`的渲染方法
 2. html下如何将markdown 转换为html
 3. 如何拓展strapdown.js的功能
