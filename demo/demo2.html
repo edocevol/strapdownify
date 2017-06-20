@@ -1,0 +1,73 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="renderer" content="webkit">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <title>strapdown渲染markdown的demo</title>
+    <link href="./static/bootstrap-3.3.5/css/bootstrap.min.css" rel="stylesheet">
+    <link href="./static/css/reset.css" rel="stylesheet">
+    <link href="./static/css/site.css" rel="stylesheet">
+    <link href="./static/css/lib.css" rel="stylesheet">
+
+    <link href="../strapdown/strapdown.css" rel="stylesheet">
+    <link href="../strapdown/themes/readable.min.css" rel="stylesheet">
+</head>
+<body>
+<div class="bt-warp bge6">
+    <div id="container" class="container-fluid">
+        <div class="sidebar-scroll">
+            <div class="sidebar-auto">
+                <div id="task" class="task cw" onclick="task()"></div>
+                <h3 class="mypcip"><span class="f14 cw" id="serverip">localhost</span></h3>
+                <ul class="menu">
+                    <li><a class="menu_home" href="index.html">demo1</a></li>
+                    <li><a class="menu_folder" href="index2.html">demo2</a></li>
+                    <li><a class="menu_fork" href="http://github.com/sixtrees/strapdownify">fork</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="main-content">
+            <div class="container-fluid" style="padding-bottom:50px">
+                <textarea id="mdcontent" style="display: none;">
+
+                </textarea>
+                <div id="htmlcontent">
+
+                </div>
+            </div>
+        </div>
+
+
+    </div>
+
+
+    <div class="footer bgw">
+        markdown内容渲染框架 ©2017-2017
+        <a style="margin-left:20px;color:#20a53a;" href="http://github.com/sixtrees/strapdownify"
+           target="_blank">strapdownify on github</a>
+    </div>
+</div>
+
+<script src="./static/js/jquery-1.10.2.min.js"></script>
+<script src="./static/js/bootstrap.min.js"></script>
+<script src="./static/layer/layer.js"></script>
+<script src="../strapdown/strapdown.js"></script>
+
+<script>
+    var loadT = layer.msg('正在加载...', {icon: 16, time: 0, shade: [0.3, '#000']});
+    $.ajax({
+        url: 'readme.md',
+        type: "POST",
+        dataType: "text",
+        success: function (data) {
+            $("#mdcontent").text(data);
+            markdown("mdcontent", "htmlcontent");
+            layer.close(loadT);
+        }
+    });
+</script>
+</body>
+
+</html>
